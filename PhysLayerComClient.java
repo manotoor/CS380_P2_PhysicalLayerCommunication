@@ -1,3 +1,8 @@
+/*
+ *	Author: Mano Toor
+ * 	Project 2: Physical Layer Communication Client
+ */
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -30,11 +35,7 @@ public class PhysLayerComClient{
 					bits[i] = 0;
 				}
 			}
-			for(int i = 0; i < bits.length;i++){
-				if(i %5 == 0)
-					System.out.print("\n");
-				System.out.print(bits[i]);
-			}
+			
 			//Convert to NRZI
 			String fiveb = "";
 			fiveb = fiveb + Integer.toString(bits[0]);
@@ -47,11 +48,25 @@ public class PhysLayerComClient{
 			String fourb = fiveBtoFourB(fiveb);
 			System.out.printf("Received 32 bytes: %s%n",fourb);
 
+			byte[] bytes = new byte[32];
+			for(int i = 0; i < fourb.length(); i = i +2){
+				byte firstHalf = (byte) Byte.parseByte(String.valueOf(fourb.charAt(i)), 16);
+				firstHalf = (byte) (firstHalf << 4);
+				byte secondHalf = (byte)Byte.parseByte(String.valueOf(fourb.charAt(i+1)),16);
+				bytes[i/2] = (byte)(firstHalf + secondHalf);
+			}
+			os.write(bytes);
 
-
+			if(is.read() == 1){
+				System.out.println("Response is good.");
+			}else{
+				System.out.println("Response is bad.");
+			}
+			socket.close();
 		}catch(Exception e){
 			System.out.println("Error connecting to Server." + e);
 		}
+		System.out.println("Disconnected from server.");
 	}
 	public static String fiveBtoFourB(String fiveb){
 		String fourb="";
