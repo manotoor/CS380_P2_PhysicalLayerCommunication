@@ -45,32 +45,34 @@ public class PhysLayerComClient{
 					fiveb=fiveb + "1";
 			}
 			String fourb = fiveBtoFourB(fiveb);
-			System.out.printf("Received 32 bytes: %20X",fourb);
+			System.out.printf("Received 32 bytes: %s%n",fourb);
+
+
 
 		}catch(Exception e){
 			System.out.println("Error connecting to Server." + e);
 		}
 	}
-	public static String fiveBtoFourB(String fiveB){
-		String fourB="";
-		for(int i = 0; i < fiveB.length();i = i+5){
-			if (fiveB.substring(i, i + 5).equals("11110")) { fourB = fourB + "0"; }		 // 0000
-			else if (fiveB.substring(i, i + 5).equals("01001")) { fourB = fourB + "1"; } // 0001
-			else if (fiveB.substring(i, i + 5).equals("10100")) { fourB = fourB + "2"; } // 0010
-			else if (fiveB.substring(i, i + 5).equals("10101")) { fourB = fourB + "3"; } // 0011
-			else if (fiveB.substring(i, i + 5).equals("01010")) { fourB = fourB + "4"; } // 0100
-			else if (fiveB.substring(i, i + 5).equals("01011")) { fourB = fourB + "5"; } // 0101
-			else if (fiveB.substring(i, i + 5).equals("01110")) { fourB = fourB + "6"; } // 0110
-			else if (fiveB.substring(i, i + 5).equals("01111")) { fourB = fourB + "7"; } // 0111
-			else if (fiveB.substring(i, i + 5).equals("10010")) { fourB = fourB + "8"; } // 1000
-			else if (fiveB.substring(i, i + 5).equals("10011")) { fourB = fourB + "9"; } // 1001
-			else if (fiveB.substring(i, i + 5).equals("10110")) { fourB = fourB + "A"; } // 1010
-			else if (fiveB.substring(i, i + 5).equals("10111")) { fourB = fourB + "B"; } // 1011
-			else if (fiveB.substring(i, i + 5).equals("11010")) { fourB = fourB + "C"; } // 1100
-			else if (fiveB.substring(i, i + 5).equals("11011")) { fourB = fourB + "D"; } // 1101
-			else if (fiveB.substring(i, i + 5).equals("11100")) { fourB = fourB + "E"; } // 1110
-			else if (fiveB.substring(i, i + 5).equals("11101")) { fourB = fourB + "F"; } // 1111
+	public static String fiveBtoFourB(String fiveb){
+		String fourb="";
+		for(int i = 0; i < fiveb.length();i = i+5){
+			if (fiveb.substring(i, i + 5).equals("11110")) { fourb = fourb + "0"; }		 // 0000
+			else if (fiveb.substring(i, i + 5).equals("01001")) { fourb = fourb + "1"; } // 0001
+			else if (fiveb.substring(i, i + 5).equals("10100")) { fourb = fourb + "2"; } // 0010
+			else if (fiveb.substring(i, i + 5).equals("10101")) { fourb = fourb + "3"; } // 0011
+			else if (fiveb.substring(i, i + 5).equals("01010")) { fourb = fourb + "4"; } // 0100
+			else if (fiveb.substring(i, i + 5).equals("01011")) { fourb = fourb + "5"; } // 0101
+			else if (fiveb.substring(i, i + 5).equals("01110")) { fourb = fourb + "6"; } // 0110
+			else if (fiveb.substring(i, i + 5).equals("01111")) { fourb = fourb + "7"; } // 0111
+			else if (fiveb.substring(i, i + 5).equals("10010")) { fourb = fourb + "8"; } // 1000
+			else if (fiveb.substring(i, i + 5).equals("10011")) { fourb = fourb + "9"; } // 1001
+			else if (fiveb.substring(i, i + 5).equals("10110")) { fourb = fourb + "A"; } // 1010
+			else if (fiveb.substring(i, i + 5).equals("10111")) { fourb = fourb + "B"; } // 1011
+			else if (fiveb.substring(i, i + 5).equals("11010")) { fourb = fourb + "C"; } // 1100
+			else if (fiveb.substring(i, i + 5).equals("11011")) { fourb = fourb + "D"; } // 1101
+			else if (fiveb.substring(i, i + 5).equals("11100")) { fourb = fourb + "E"; } // 1110
+			else if (fiveb.substring(i, i + 5).equals("11101")) { fourb = fourb + "F"; } // 1111
 		}
-		return fourB;
+		return fourb;
 	}
 }
